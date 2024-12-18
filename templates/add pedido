@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Adicionar Pedido{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Adicionar Pedido</h1>
+    <form method="POST" action="{{ url_for('add_pedido') }}">
+        <div class="form-group">
+            <label for="cliente">Cliente</label>
+            <input type="text" class="form-control" name="cliente" placeholder="Nome do Cliente" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone WhatsApp</label>
+            <input type="tel" class="form-control" name="telefone" placeholder="Número do WhatsApp" required>
+        </div>
+        <div class="form-group">
+            <label for="produto_id">Produto</label>
+            <select class="form-control" name="produto_id" required>
+                {% for produto in produtos %}
+                    <option value="{{ produto[0] }}">{{ produto[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" class="form-control" name="quantidade" placeholder="Quantidade" required>
+        </div>
+        <div class="form-group">
+            <label for="data_retirada_entrega">Data Retirada/Entrega</label>
+            <input type="date" class="form-control" id="data_retirada_entrega" name="data_retirada_entrega" required>
+        </div>
+        <div class="form-group">
+            <label for="tipo_entrega">Tipo de Entrega</label>
+            <select class="form-control" name="tipo_entrega" id="tipo_entrega" onchange="toggleEnderecoField()" required>
+                <option value="Retirada">Retirada</option>
+                <option value="Entrega">Entrega</option>
+            </select>
+        </div>
+        <div class="form-group" id="endereco_entrega" style="display:none;">
+            <label for="endereco_entrega">Endereço de Entrega</label>
+            <input type="text" class="form-control" name="endereco_entrega" placeholder="Endereço de Entrega">
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" name="status" required>
+                <option value="Pendente">Pendente</option>
+                <option value="Em Andamento">Em Andamento</option>
+                <option value="Concluído">Concluído</option>
+                <option value="Cancelado">Cancelado</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+    <script>
+        function toggleEnderecoField() {
+            var tipoEntrega = document.getElementById("tipo_entrega").value;
+            var enderecoField = document.getElementById("endereco_entrega");
+            if (tipoEntrega === "Entrega") {
+                enderecoField.style.display = "block";
+            } else {
+                enderecoField.style.display = "none";
+            }
+        }
+    </script>
+</div>
+{% endblock %}
