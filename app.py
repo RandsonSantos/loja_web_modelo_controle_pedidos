@@ -906,4 +906,4 @@ def get_relatorio_por_mes_e_usuario(mes, ano, user_id, produto_id):
 
 # python web server
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run(debug=True, port=os.getenv("8080", default=5000))
