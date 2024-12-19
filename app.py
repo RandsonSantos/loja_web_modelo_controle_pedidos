@@ -904,5 +904,6 @@ def get_relatorio_por_mes_e_usuario(mes, ano, user_id, produto_id):
 
 #### EXCLUIR AS ROTAS DE IMPRESSAO EM PDF  FILTRAR O COD APP
 
+# python web server
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=os.getenv("PORT", default=5000))
