@@ -29,7 +29,7 @@
                 <tr>
                     <td>{{ pedido[0] }}</td>
                     <td>{{ pedido[1] }}</td>
-                    <td>{{ pedido[6] if pedido[6] else 'N/A' }}</td>
+                    <td>{{ pedido[2] }}</td>
                     <td>{{ pedido[7] }}</td>
                     <td>
                         <a href="{{ url_for('view_pedido', pedido_id=pedido[0]) }}" class="btn btn-info btn-sm">Ver</a>
